@@ -1,0 +1,87 @@
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		//document.getElementById('pokebutton').addEventListener= ('click', function() {});
+	
+		$("#pokebutton").click(
+		function(){
+			let pokemon = $("#pokemon-name").val();
+			console.log(pokemon);
+
+		$.ajax({
+		  //url: "https://pokeapi.co/api/v2/pokemon/" + pokemon,
+		  url: "https://pokeapi.co/api/v2/pokemon/" + pokemon,
+		  dataType: 'json',
+		  success: function(data) {
+			//alert("Temperature is: " + data.name);
+			//alert("Temperature is: " + data.stas.base_stats);
+			document.getElementById("names").innerHTML = data.name;
+			//document.getElementById("abilities").innerHTML = data.abilities.ability.name;
+			//document.getElementById("indices").innerHTML = data.game_indices.game_index;
+			//document.getElementById("moves").innerHTML = data.stas.base_stats;
+			$("#names").html(data.name);
+			//$("#abilities").html(data.abilities.ability.name);
+			//$("#indices").html(data.game_indices.game_index);
+			//$("#moves").html(data.stas.base_stats);
+		  },
+		  error: function() {
+			alert("error");
+		  }
+		});
+	}
+	);
+
+});
+	</script>
+	<style>
+body {
+	text-align:center;
+	background-color: rgb(40,40,107);
+}
+.pokemon {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+
+    background: url("https://www.ecopetit.cat/wpic/mpic/95-952584_pokemon-anime-wallpaper.png");
+    color: transparent;
+    background-position: 0 70%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -o-background-clip: text;
+    background-clip: text;
+
+    font-size: 100px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: -1px;
+    padding: 0 15px;
+
+
+    -webkit-text-stroke: 13px;
+    transition: text-shadow 0.1s;
+}
+.pokemon:hover {
+	text-shadow: 0 0 2px rgb(249,209,53);
+}
+	</style>
+
+</head>
+<body>
+<div class='pokemon'>
+	<div class="pokemon:hover">
+		<h1>POKÉMON</h1>
+	</div></div>
+<h1 id="names" style=color:rgb(249,209,53)>What's your favourite Pokémon?</h1>
+<input type = "text" name="pokemon-name" id="pokemon-name"><input type="button" id="pokebutton" value="Search">
+<h2 id="abilities" style=color:rgb(78,169,255)> ?</h2>
+<h2 id="indices" style=color:rgb(78,169,255)>??</h2>
+<h2 id="moves" style=color:rgb(78,169,255)> ???</h2>
+</body>
+</html>
+
+
+
